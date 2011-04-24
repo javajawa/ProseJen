@@ -77,4 +77,19 @@ public final class MarkovProcess<S> implements IMarkovProcess<S>
 		throw new UnsupportedOperationException("Not supported yet.");
 	}
 	
+	public void addRateTransition(S from, S to, float rate)
+	{
+		throw new UnsupportedOperationException("Not yet implemented.");
+	}
+
+	public void addWeightTransition(S from, S to, float delta)
+	{
+		throw new UnsupportedOperationException("Not yet implemented.");
+	}
+
+	public void modifyTransitionWeighting(S from, S to, float delta)
+	{
+		throw new UnsupportedOperationException("Not yet implemented.");
+	}
+
 }
