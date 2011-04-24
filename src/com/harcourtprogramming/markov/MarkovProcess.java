@@ -24,12 +24,21 @@ public final class MarkovProcess<S> implements IMarkovProcess<S>
 		stateLookup = stateDictionary.inverse();
 	}
 
+	/**
+	 * TODO: Documentation Here
+	 * @return 
+	 */
 	@Override
 	public synchronized MarkovProcess<S> clone()
 	{
 		throw new UnsupportedOperationException("Not yet implemented");
 	}
 
+	/**
+	 * TODO: Documentation Here
+	 * @param data
+	 * @return 
+	 */
 	private Set<IMarkovTransition<S>> translateTransitionSet(Set<IMarkovTransition<MarkovState>> data)
 	{
 		Set<IMarkovTransition<S>> out = new HashSet<IMarkovTransition<S>>(data.size(), 1);
@@ -85,17 +94,35 @@ public final class MarkovProcess<S> implements IMarkovProcess<S>
 		}
 	}
 
-	public void addRateTransition(S from, S to, float rate)
+	/**
+	 * TODO: Documentation Here
+	 * @param from
+	 * @param to
+	 * @param rate
+	 */
+	void addRateTransition(S from, S to, float rate)
 	{
 		throw new UnsupportedOperationException("Not yet implemented.");
 	}
 
-	public void addWeightTransition(S from, S to, float delta)
+	/**
+	 * 
+	 * @param from
+	 * @param to
+	 * @param delta
+	 */
+	void addWeightTransition(S from, S to, float delta)
 	{
 		throw new UnsupportedOperationException("Not yet implemented.");
 	}
 
-	public void modifyTransitionWeighting(S from, S to, float delta)
+	/**
+	 * TODO: Documentation Here
+	 * @param from
+	 * @param to
+	 * @param delta
+	 */
+	void modifyTransitionWeighting(S from, S to, float delta)
 	{
 		throw new UnsupportedOperationException("Not yet implemented.");
 	}

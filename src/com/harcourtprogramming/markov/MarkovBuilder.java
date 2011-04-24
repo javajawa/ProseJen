@@ -14,43 +14,78 @@ public final class MarkovBuilder<S> implements IMarkovProcess<S>
 	private boolean sealed;
 	private boolean statesSealed;
 
+	/**
+	 * TODO: Documentation Here
+	 */
 	public MarkovBuilder()
 	{
 		sealed = false;
 		proc = new MarkovProcess<S>();
 	}
 
+	/**
+	 * TODO: Documentation Here
+	 */
 	public void seal()
 	{
 		sealed = true;
 	}
 
+	/**
+	 * TODO: Documentation Here
+	 * @return
+	 */
 	public MarkovProcess<S> getProcess()
 	{
 		if (this.sealed) return proc;
 		return proc.clone();
 	}
 
+	/**
+	 * TODO: Documentation Here
+	 * @param states
+	 */
 	public void addStates(Iterable<S> states)
 	{
 		proc.addStates(states);
 	}
 
+	/**
+	 * TODO: Documentation Here
+	 */
 	public void sealStates()
 	{
 		statesSealed = true;
 	}
 
+	/**
+	 * TODO: Documentation Here
+	 * @param from
+	 * @param to
+	 * @param rate
+	 */
 	public void addRateTransition(S from, S to, float rate)
 	{
 		throw new UnsupportedOperationException("Not yet implemented.");
 	}
 
+	/**
+	 * TODO: Documentation Here
+	 * @param from
+	 * @param to
+	 * @param delta
+	 */
 	public void addWeightTransition(S from, S to, float delta)
 	{
 		throw new UnsupportedOperationException("Not yet implemented.");
 	}
 
+	/**
+	 * TODO: Documentation Here
+	 * @param from
+	 * @param to
+	 * @param delta
+	 */
 	public void modifyTransitionWeighting(S from, S to, float delta)
 	{
 		throw new UnsupportedOperationException("Not yet implemented.");

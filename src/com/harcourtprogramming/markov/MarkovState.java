@@ -11,6 +11,11 @@ final class MarkovState
 {
 	private Set<MarkovTransition> transitions;
 	
+	/**
+	 * TODO: Documentation Here
+	 * @param next
+	 * @return 
+	 */
 	public boolean hasTransitionTo(MarkovState next)
 	{
 		for (MarkovTransition trans : transitions)
@@ -20,9 +25,20 @@ final class MarkovState
 		return false;
 	}
 
+	/**
+	 * TODO: Documentation Here
+	 * @return 
+	 */
 	public Set<IMarkovTransition<MarkovState>> getTransitions()
 	{
 		return new HashSet<IMarkovTransition<MarkovState>>(transitions);
 	}
-	
+
+	/**
+	 * TODO: Documentation Here
+	 */
+	MarkovState()
+	{
+		transitions = new HashSet<MarkovTransition>();
+	}
 }
