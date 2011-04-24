@@ -66,6 +66,7 @@ public final class MarkovBuilder<S> implements IMarkovProcess<S>
 	 */
 	public void addRateTransition(S from, S to, float rate)
 	{
+		// TODO: Write this function
 		throw new UnsupportedOperationException("Not yet implemented.");
 	}
 
@@ -77,6 +78,7 @@ public final class MarkovBuilder<S> implements IMarkovProcess<S>
 	 */
 	public void addWeightTransition(S from, S to, float delta)
 	{
+		// TODO: Write this function
 		throw new UnsupportedOperationException("Not yet implemented.");
 	}
 
@@ -88,12 +90,14 @@ public final class MarkovBuilder<S> implements IMarkovProcess<S>
 	 */
 	public void modifyTransitionWeighting(S from, S to, float delta)
 	{
+		// TODO: Write this function
 		throw new UnsupportedOperationException("Not yet implemented.");
 	}
 
 	@Override
 	public boolean transistionExists(S from, S to)
 	{
+		// TODO: Write this function
 		throw new UnsupportedOperationException("Not supported yet.");
 	}
 
