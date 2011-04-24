@@ -6,7 +6,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- * Test to check that the sealing functions of {@link MarkovBuilder} correctly 
+ * Test to check that the sealing functions of {@link MarkovBuilder} correctly
  * seal the underlying {@link MarkovProcess} so that it can not be edited
  *
  * @see MarkovBuilder
@@ -20,8 +20,8 @@ public class SealingTest
 	/**
 	 * Placeholder public constructor 
 	 *
-	 * {@link SealingTest} has no internal state information, and all instances 
-	 * are isomorphic. This constructor guarantees creation of this test class is 
+	 * {@link SealingTest} has no internal state information, and all instances
+	 * are isomorphic. This constructor guarantees creation of this test class is
 	 * public.
 	 */
 	public SealingTest()
@@ -31,11 +31,11 @@ public class SealingTest
 
 	/**
 	 * Check that, after calling {@link MarkovBuilder#sealStates()}, you can not
-	 * implicitly add states to the {@link MarkovProcess} using {@link 
+	 * implicitly add states to the {@link MarkovProcess} using {@link
 	 * MarkovBuilder#addRateTransition(java.lang.Object, java.lang.Object, float)
 	 * MarkovBuilder.addRateTransition}
 	 *
-	 * @see #stateSealingUsingWeightedTransition() 
+	 * @see #stateSealingUsingWeightedTransition()
 	 * @see #stateSealingUsingAddStates()
 	 */
 	@Test
@@ -49,7 +49,7 @@ public class SealingTest
 		testStates.add(1);
 		testStates.add(0);
 		assert(testStates.size() == 3);
-		
+
 		builder.addStates(testStates);
 		assertEquals("Adding states permitted non-unique states", 2, builder.getStates().size());
 
@@ -97,7 +97,7 @@ public class SealingTest
 		testStates.add(1);
 		testStates.add(0);
 		assert(testStates.size() == 3);
-		
+
 		builder.addStates(testStates);
 		assertEquals("Adding states permitted non-unique states", 2, builder.getStates().size());
 
