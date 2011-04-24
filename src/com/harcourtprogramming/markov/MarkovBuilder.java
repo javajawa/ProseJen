@@ -12,6 +12,7 @@ public final class MarkovBuilder<S> implements IMarkovProcess<S>
 {
 	private MarkovProcess<S> proc;
 	private boolean sealed;
+	private boolean statesSealed;
 
 	public MarkovBuilder()
 	{
@@ -28,6 +29,16 @@ public final class MarkovBuilder<S> implements IMarkovProcess<S>
 	{
 		if (this.sealed) return proc;
 		return proc.clone();
+	}
+
+	public void addStates(Iterable<S> states)
+	{
+		proc.addStates(states);
+	}
+
+	public void sealStates()
+	{
+		statesSealed = true;
 	}
 
 	public void addRateTransition(S from, S to, float rate)

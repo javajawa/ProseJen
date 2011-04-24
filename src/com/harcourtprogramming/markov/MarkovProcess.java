@@ -77,6 +77,14 @@ public final class MarkovProcess<S> implements IMarkovProcess<S>
 		throw new UnsupportedOperationException("Not supported yet.");
 	}
 
+	void addStates(Iterable<S> states)
+	{
+		for (S newState : states)
+		{
+			stateDictionary.put(newState, new MarkovState());
+		}
+	}
+
 	public void addRateTransition(S from, S to, float rate)
 	{
 		throw new UnsupportedOperationException("Not yet implemented.");
