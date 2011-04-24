@@ -13,9 +13,10 @@ public final class MarkovBuilder<S> implements IMarkovProcess<S>
 	private MarkovProcess<S> proc;
 	private boolean sealed;
 
-	private MarkovBuilder()
+	public MarkovBuilder()
 	{
-		// Nothing to see here. Move along, citizen.
+		sealed = false;
+		proc = new MarkovProcess<S>();
 	}
 
 	public void seal()
