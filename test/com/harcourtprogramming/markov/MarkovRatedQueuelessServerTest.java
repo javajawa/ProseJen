@@ -26,6 +26,7 @@ public class MarkovRatedQueuelessServerTest
 
 	public MarkovRatedQueuelessServerTest()
 	{
+		// Nothing to see here. Move along, citizen!
 	}
 
 	MarkovBuilder<String> createSemaphor()
@@ -40,7 +41,7 @@ public class MarkovRatedQueuelessServerTest
 		}
 		catch (Throwable e)
 		{
-			throw new Error("Error whilst attempt to add transition from " + STATE0 + " to " + STATE1, e);
+			fail("Error whilst attempt to add transition from " + STATE0 + " to " + STATE1 + ": " + e.toString());
 		}
 
 		// Add the completion transition
@@ -50,7 +51,7 @@ public class MarkovRatedQueuelessServerTest
 		}
 		catch (Throwable e)
 		{
-			throw new Error("Error whilst attempt to add transition from " + STATE1 + " to " + STATE0, e);
+			fail("Error whilst attempt to add transition from " + STATE1 + " to " + STATE0 + ": " + e.toString());
 		}
 
 		return builder;
