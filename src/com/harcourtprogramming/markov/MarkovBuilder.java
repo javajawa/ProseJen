@@ -1,35 +1,77 @@
 package com.harcourtprogramming.markov;
 
+import java.util.Map;
+import java.util.Set;
+
 /**
  *
+ * @param <S> 
  * @author Benedict
  */
-public final class MarkovBuilder
+public final class MarkovBuilder<S> implements IMarkovProcess<S>
 {
-
+	private MarkovProcess<S> proc;
+	private boolean sealed;
+	
 	private MarkovBuilder()
 	{
 		// Nothing to see here. Move along, citizen.
 	}
 	
-	public static void seal(MarkovProcess p)
+	public void seal()
 	{
-		p.seal();
+		sealed = true;
 	}
 	
-	public static void addRateTransition(MarkovProcess<?> p, Object from, Object to, float rate)
+	public MarkovProcess<S> getProcess()
+	{
+		if (this.sealed) return proc;
+		return proc.clone();
+	}
+	
+	public void addRateTransition(S from, S to, float rate)
 	{
 		throw new UnsupportedOperationException("Not yet implemented.");
 	}
 	
-	public static void addWeightTransition(MarkovProcess<?> p, Object from, Object to, float delta)
+	public void addWeightTransition(S from, S to, float delta)
 	{
 		throw new UnsupportedOperationException("Not yet implemented.");
 	}
 	
-	public static void modifyTransitionWeighting(MarkovProcess<?> p, Object from, Object to, float delta)
+	public void modifyTransitionWeighting(S from, S to, float delta)
 	{
 		throw new UnsupportedOperationException("Not yet implemented.");
+	}
+
+	@Override
+	public boolean transistionExists(S from, S to)
+	{
+		throw new UnsupportedOperationException("Not supported yet.");
+	}
+
+	@Override
+	public Set<S> getStates()
+	{
+		return proc.getStates();
+	}
+
+	@Override
+	public Set<IMarkovTransition<S>> getTransitions(S fromState)
+	{
+		return proc.getTransitions(fromState);
+	}
+
+	@Override
+	public Map<S, Float> getProbabilityDensityFunction(S fromState)
+	{
+		return proc.getProbabilityDensityFunction(fromState);
+	}
+
+	@Override
+	public Map<S, Float> getCumulativeDensityFuntion(S fromState)
+	{
+		return proc.getCumulativeDensityFuntion(fromState);
 	}
 	
 }

@@ -2,6 +2,7 @@ package com.harcourtprogramming.markov;
 
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
+import com.google.common.collect.Maps;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Map;
@@ -9,19 +10,24 @@ import java.util.Set;
 
 /**
  *
+ * @param <S> 
  * @author Benedict
  */
-public final class MarkovProcess<S>
+public final class MarkovProcess<S> implements IMarkovProcess<S>
 {
 	private BiMap<S, MarkovState> stateDictionary;
 	private BiMap<MarkovState, S> stateLookup;
-	private boolean sealed;
 
-	public MarkovProcess()
+	MarkovProcess()
 	{
-		sealed = false;
-		stateDictionary =  HashBiMap.create();
+		stateDictionary = Maps.synchronizedBiMap(HashBiMap.<S, MarkovState>create());
 		stateLookup = stateDictionary.inverse();
+	}
+	
+	@Override
+	public synchronized MarkovProcess<S> clone()
+	{
+		throw new UnsupportedOperationException("Not yet implemented");
 	}
 	
 	private Set<IMarkovTransition<S>> translateTransitionSet(Set<IMarkovTransition<MarkovState>> data)
@@ -41,34 +47,34 @@ public final class MarkovProcess<S>
 		return Collections.unmodifiableSet(out);
 	}
 	
+	@Override
 	public boolean transistionExists(S from, S to)
 	{
 		return stateDictionary.get(from).hasTransitionTo(stateDictionary.get(to));
 	}
 
+	@Override
 	public Set<S> getStates()
 	{
 		return stateDictionary.keySet();
 	}
 
+	@Override
 	public Set<IMarkovTransition<S>> getTransitions(S fromState)
 	{
 		return translateTransitionSet(stateDictionary.get(fromState).getTransitions());
 	}
 
+	@Override
 	public Map<S, Float> getProbabilityDensityFunction(S fromState)
 	{
 		throw new UnsupportedOperationException("Not supported yet.");
 	}
 
+	@Override
 	public Map<S, Float> getCumulativeDensityFuntion(S fromState)
 	{
 		throw new UnsupportedOperationException("Not supported yet.");
-	}
-	
-	synchronized void seal()
-	{
-		sealed = true;
 	}
 	
 }
