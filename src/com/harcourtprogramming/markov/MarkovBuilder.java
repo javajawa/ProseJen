@@ -12,33 +12,33 @@ public final class MarkovBuilder<S> implements IMarkovProcess<S>
 {
 	private MarkovProcess<S> proc;
 	private boolean sealed;
-	
+
 	private MarkovBuilder()
 	{
 		// Nothing to see here. Move along, citizen.
 	}
-	
+
 	public void seal()
 	{
 		sealed = true;
 	}
-	
+
 	public MarkovProcess<S> getProcess()
 	{
 		if (this.sealed) return proc;
 		return proc.clone();
 	}
-	
+
 	public void addRateTransition(S from, S to, float rate)
 	{
 		throw new UnsupportedOperationException("Not yet implemented.");
 	}
-	
+
 	public void addWeightTransition(S from, S to, float delta)
 	{
 		throw new UnsupportedOperationException("Not yet implemented.");
 	}
-	
+
 	public void modifyTransitionWeighting(S from, S to, float delta)
 	{
 		throw new UnsupportedOperationException("Not yet implemented.");
@@ -73,5 +73,5 @@ public final class MarkovBuilder<S> implements IMarkovProcess<S>
 	{
 		return proc.getCumulativeDensityFuntion(fromState);
 	}
-	
+
 }

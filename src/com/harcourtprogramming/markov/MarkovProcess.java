@@ -23,13 +23,13 @@ public final class MarkovProcess<S> implements IMarkovProcess<S>
 		stateDictionary = Maps.synchronizedBiMap(HashBiMap.<S, MarkovState>create());
 		stateLookup = stateDictionary.inverse();
 	}
-	
+
 	@Override
 	public synchronized MarkovProcess<S> clone()
 	{
 		throw new UnsupportedOperationException("Not yet implemented");
 	}
-	
+
 	private Set<IMarkovTransition<S>> translateTransitionSet(Set<IMarkovTransition<MarkovState>> data)
 	{
 		Set<IMarkovTransition<S>> out = new HashSet<IMarkovTransition<S>>(data.size(), 1);
@@ -46,7 +46,7 @@ public final class MarkovProcess<S> implements IMarkovProcess<S>
 		
 		return Collections.unmodifiableSet(out);
 	}
-	
+
 	@Override
 	public boolean transistionExists(S from, S to)
 	{
@@ -76,7 +76,7 @@ public final class MarkovProcess<S> implements IMarkovProcess<S>
 	{
 		throw new UnsupportedOperationException("Not supported yet.");
 	}
-	
+
 	public void addRateTransition(S from, S to, float rate)
 	{
 		throw new UnsupportedOperationException("Not yet implemented.");
