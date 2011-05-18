@@ -96,4 +96,21 @@ public class ImmutableMarkovTransitionTest
 		assertEquals(expResult, s.getWeighting(), 0.05);
 	}
 
+	/**
+	 * Tests that the state in an {@link ImmutableMarkovTransition} can not be
+	 * overwritten with a new reference, thus changing the destination State
+	 */
+	@Test
+	public void testOverwritingState()
+	{
+		String insertValue  = "State 1";
+		String expectedValue = new String(insertValue);
+		String replaceValue = "State 2";
+
+		ImmutableMarkovTransition<String> s = new ImmutableMarkovTransition<String>(10.0F, insertValue);
+		insertValue = replaceValue;
+
+		assertEquals("Able to update destination state", expectedValue, s.getDestinationState());
+	}
+
 }
