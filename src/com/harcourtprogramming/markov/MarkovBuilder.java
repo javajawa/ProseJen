@@ -47,6 +47,7 @@ public final class MarkovBuilder<S> implements IMarkovProcess<S>
 	 */
 	public void addStates(Iterable<S> states)
 	{
+		if (statesSealed) throw new UnsupportedOperationException("Unable to add states. State space is sealed");
 		proc.addStates(states);
 	}
 
