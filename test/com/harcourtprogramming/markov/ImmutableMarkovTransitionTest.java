@@ -4,8 +4,9 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- *
- * @author Benedict
+ * Tests the constructors, getters, and the lack of setters for the
+ * {@link ImmutableMarkovTransition}
+ * @author Benedict Harcourt &lt;ben.harcourt@harocurtprogramming.co.uk&gt;
  */
 public class ImmutableMarkovTransitionTest
 {
@@ -14,7 +15,7 @@ public class ImmutableMarkovTransitionTest
 	 * Tests that a Transition can not be created without a destination state.
 	 */
 	@Test
-	public void ContrcutorTestWithNull()
+	public void ConstructorTestWithNull()
 	{
 		try
 		{
@@ -31,7 +32,7 @@ public class ImmutableMarkovTransitionTest
 	 * Tests that a Transition can not be created with a non-positive weighting
 	 */
 	@Test
-	public void ContrcutorTestWithZero()
+	public void ConstructorTestWithZero()
 	{
 		try
 		{
@@ -48,7 +49,7 @@ public class ImmutableMarkovTransitionTest
 	 * Tests that a Transition can not be created with a non-positive weighting
 	 */
 	@Test
-	public void ContrcutorTestWithNegative()
+	public void ConstructorTestWithNegative()
 	{
 		try
 		{
@@ -61,6 +62,11 @@ public class ImmutableMarkovTransitionTest
 		fail("Illegal Argument Exception was not thrown");
 	}
 
+	/**
+	 * Test that the weighting returned by
+	 * {@link ImmutableMarkovTransition#getWeighting() getWeighting} is the same
+	 * as the weighting set in the constructor.
+	 */
 	@Test
 	public void testGetWeighting()
 	{
@@ -72,6 +78,9 @@ public class ImmutableMarkovTransitionTest
 		assertEquals(expResult, result, 0.001);
 	}
 
+	/**
+	 * Tests that the retrieved destination state is the same as the inserted one.
+	 */
 	@Test
 	public void testGetDestinationState()
 	{
@@ -82,7 +91,11 @@ public class ImmutableMarkovTransitionTest
 
 		assertEquals(expResult, result);
 	}
-	
+
+	/**
+	 * Test that the weighting of the an {@link ImmutableMarkovTransition} can
+	 * not be changed after it is creating.
+	 */
 	@Test
 	public void testOverwritingWeighting()
 	{
